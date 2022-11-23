@@ -8,8 +8,14 @@ import snowflake.connector
 @st.experimental_singleton
 def init_connection():
     return snowflake.connector.connect(
-        **st.secrets["snowflake"], client_session_keep_alive=True
-    )
+    user = "ds300",
+    account = "mgb-mgbprod.privatelink",
+    warehouse = "edw_adhoc_all_wh",
+    database = "edw_workspace",
+    schema = "mee",
+    role = "sfedw_ws_mee",
+    authenticator = "externalbrowser"
+)
 
 conn = init_connection()
 
